@@ -8,5 +8,5 @@ import org.apache.ibatis.annotations.Param;
 @Mapper
 public interface UserMapper {
     @Insert("INSERT INTO users(id,password,name,phone_number,email) VALUES(#{user.id},#{user.password},#{user.name},#{user.phone_number},#{user.email})")
-    void insert(User user);
+    int insert(@Param("user") User user);
 }
