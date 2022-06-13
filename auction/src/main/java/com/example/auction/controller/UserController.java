@@ -12,12 +12,14 @@ public class UserController {
     @Autowired // 생성자 주입
     private UserMapper userMapper;
 
-    @GetMapping("")
-    public String test() {
-        return "Test!!!";
-    }
     @PostMapping("")
     public int addUser(@RequestBody User user){
-        return userMapper.insert(user);
+        return userMapper.addUser(user);
     }
+
+    @GetMapping("")
+    public User getUser(@RequestParam String id){
+        return userMapper.getUser(id);
+    }
+
 }
