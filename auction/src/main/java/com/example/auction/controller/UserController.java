@@ -22,4 +22,8 @@ public class UserController {
         return userMapper.getUser(id);
     }
 
+    @PutMapping("/{id}")
+    public int updateUser(@RequestBody User updateUser, @PathVariable String id) {
+        return userMapper.updateUser(updateUser, id);
+    }
 }

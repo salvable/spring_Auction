@@ -10,4 +10,7 @@ public interface UserMapper {
 
     @Select("SELECT * FROM users WHERE id = #{userId}")
     User getUser(@Param("userId") String userId);
+
+    @Update("UPDATE users SET password = #{updateUser.password},name = #{updateUser.name},phone_number = #{updateUser.phone_number},email = #{updateUser.email} where id = #{auctionId}")
+    int updateUser(@Param("updateUser") User updateUser, @Param("auctionId") String auctionId);
 }
