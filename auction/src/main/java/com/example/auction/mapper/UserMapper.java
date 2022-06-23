@@ -13,6 +13,10 @@ public interface UserMapper {
     @Select("SELECT * FROM users WHERE id = #{userId}")
     User getUser(@Param("userId") String userId);
 
-    @Update("UPDATE users SET password = #{updateUser.password},name = #{updateUser.name},phone_number = #{updateUser.phone_number},email = #{updateUser.email} where id = #{auctionId}")
-    int updateUser(@Param("updateUser") HashMap updateUser, @Param("auctionId") String auctionId);
+    @Update("UPDATE users SET password = #{updateUser.password},name = #{updateUser.name},phone_number = #{updateUser.phone_number},email = #{updateUser.email} where id = #{userId}")
+    int updateUser(@Param("updateUser") HashMap updateUser, @Param("userId") String userId);
+
+    @Delete("DELETE FROM users WHERE id = #{userId}")
+    int deleteUser(@Param("userId") String userId);
+
 }

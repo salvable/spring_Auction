@@ -28,4 +28,9 @@ public class UserController {
     public int updateUser(@RequestBody HashMap updateUser, @PathVariable String id) {
         return userMapper.updateUser(updateUser, id);
     }
+
+    @DeleteMapping("/{id}")
+    public int deleteUser(@PathVariable String id) {
+        return userMapper.deleteUser(id);
+    }
 }
