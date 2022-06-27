@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 
 @RestController
 @RequestMapping("/auction")
@@ -22,5 +23,15 @@ public class AuctionController {
     @PutMapping("/{auctionId}")
     public int updateAuction(@PathVariable String auctionId, @RequestBody HashMap auction, @RequestParam String userId) {
         return auctionMapper.updateAuction(auction, auctionId);
+    }
+
+    @GetMapping("")
+    public Auction getAuction(@RequestParam String auctionId) {
+        return auctionMapper.getAuction(auctionId);
+    }
+
+    @GetMapping("/{userId}")
+    public List<Auction> getAuctions(@PathVariable String userId) {
+        return auctionMapper.getAuctions(userId);
     }
 }

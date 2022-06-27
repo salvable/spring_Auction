@@ -3,12 +3,10 @@ package com.example.auction.mapper;
 import com.example.auction.model.Auction;
 
 import com.example.auction.model.User;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 
 import java.util.HashMap;
+import java.util.List;
 
 @Mapper
 public interface AuctionMapper {
@@ -17,4 +15,11 @@ public interface AuctionMapper {
 
     @Update("UPDATE auctions SET title = #{updateAuction.title},description = #{updateAuction.description},img = #{updateAuction.img},deadline = #{updateAuction.deadline} ,price = #{updateAuction.price} where id = #{auctionId}")
     int updateAuction(@Param("updateAuction") HashMap auction, @Param("auctionId") String auctionId);
+
+    @Select("SELECT * FROM auctions WHERE id = #{auctionId}")
+    Auction getAuction(@Param("auctionId") String auctionId);
+
+    @Select("SELECT * FROM auctions WHERE userid = #{userId}")
+    List<Auction> getAuctions(@Param("userId") String userId);
+
 }
